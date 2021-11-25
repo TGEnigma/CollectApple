@@ -1,20 +1,18 @@
 ﻿using CollectApple.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace CollectApple.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    public class RegisterViewModel : BaseViewModel
     {
         private string email;
         private string password;
+        private string passwordCheck;
 
         public string Email
         {
-            get { return email; }
-            set { SetProperty( ref email, value ); }
+            get {  return email; }
+            set {  SetProperty ( ref email, value ); }
         }
 
         public string Password
@@ -23,25 +21,32 @@ namespace CollectApple.ViewModels
             set { SetProperty( ref password, value ); }
         }
 
-        public Command LoginCommand { get; }
-        public Command RegisterCommand { get; }
-
-        public LoginViewModel()
+        public string PasswordCheck
         {
-            LoginCommand = new Command( OnLoginClicked );
-            RegisterCommand = new Command( OnRegisterClicked );
+            get { return passwordCheck; }
+            set { SetProperty( ref passwordCheck, value ); }
         }
 
-        private async void OnLoginClicked( object obj )
+        public Command RegisterCommand { get; }
+
+        public Command LoginCommand { get; }
+
+        public RegisterViewModel()
         {
-            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Shell.Current.GoToAsync( $"//{nameof( AboutPage )}" );
+            RegisterCommand = new Command( OnRegisterClicked );
+            LoginCommand = new Command( OnLoginClicked );
         }
 
         private async void OnRegisterClicked( object obj )
         {
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Shell.Current.GoToAsync( $"//{nameof( RegisterPage )}" );
+            await Shell.Current.GoToAsync( $"//{nameof( AboutPage )}" );
+        }
+
+        private async void OnLoginClicked( object obj )
+        {
+            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+            await Shell.Current.GoToAsync( $"//{nameof( LoginPage )}" );
         }
     }
 }

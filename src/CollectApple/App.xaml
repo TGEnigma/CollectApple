@@ -7,15 +7,21 @@
     -->
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Primary">#ff6b6b</Color>
+            <Color x:Key="PrimaryColor">#ff6b6b</Color>
+            <Color x:Key="SecondaryColor">#292b2e</Color>
+            <Color x:Key="PrimaryTextColor">#e0dcdc</Color>
+            <Color x:Key="PrimaryInactiveTextColor">#b8b8b8</Color>
+            <Color x:Key="PrimaryActiveTextColor">#f0f0f0</Color>
+
             <Style TargetType="Button">
-                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource PrimaryActiveTextColor}"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                    <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Disabled">
@@ -26,6 +32,24 @@
                         </VisualStateGroup>
                     </VisualStateGroupList>
                 </Setter>
+            </Style>
+
+            <Style TargetType="Page" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="{StaticResource SecondaryColor}"></Setter>
+            </Style>
+
+            <Style TargetType="Label" ApplyToDerivedTypes="True">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"></Setter>
+            </Style>
+
+            <Style TargetType="Entry" ApplyToDerivedTypes="True">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"/>
+                <Setter Property="PlaceholderColor" Value="{StaticResource PrimaryInactiveTextColor}"/>
+            </Style>
+
+            <Style TargetType="Shell" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="{StaticResource SecondaryColor}"></Setter>
+                <Setter Property="FlyoutBackgroundColor" Value="{StaticResource SecondaryColor}"/>
             </Style>
         </ResourceDictionary>        
     </Application.Resources>

@@ -25,11 +25,13 @@ namespace CollectApple.ViewModels
 
         public Command LoginCommand { get; }
         public Command RegisterCommand { get; }
+        public Command ForgotPasswordCommand { get; }
 
         public LoginViewModel()
         {
             LoginCommand = new Command( OnLoginClicked );
             RegisterCommand = new Command( OnRegisterClicked );
+            ForgotPasswordCommand = new Command( OnForgotPasswordClicked );
         }
 
         private async void OnLoginClicked( object obj )
@@ -41,7 +43,12 @@ namespace CollectApple.ViewModels
         private async void OnRegisterClicked( object obj )
         {
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Shell.Current.GoToAsync( $"//{nameof( RegisterPage )}" );
+            await Shell.Current.Navigation.PushAsync( new RegisterPage() );
+        }
+
+        private async void OnForgotPasswordClicked( object obj )
+        {
+            await Shell.Current.Navigation.PushAsync( new ForgotPasswordPage() );
         }
     }
 }

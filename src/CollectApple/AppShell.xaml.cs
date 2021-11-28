@@ -11,8 +11,12 @@ namespace CollectApple
         public AppShell()
         {
             InitializeComponent();
+
+            // Register routes for sub pages
             Routing.RegisterRoute( nameof( ItemDetailPage ), typeof( ItemDetailPage ) );
             Routing.RegisterRoute( nameof( NewItemPage ), typeof( NewItemPage ) );
+            Routing.RegisterRoute( nameof( CollectionDetailPage ), typeof( CollectionDetailPage ) );
+            Routing.RegisterRoute( nameof( CollectibleDetailPage ), typeof( CollectibleDetailPage ) );
 
             CurrentItem = loginPage;
         }

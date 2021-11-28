@@ -6,8 +6,7 @@
              xmlns:viewmodels="clr-namespace:CollectApple.ViewModels" 
              x:DataType="viewmodels:RegisterViewModel"
              mc:Ignorable="d"
-             x:Class="CollectApple.Views.RegisterPage"
-             Shell.NavBarIsVisible="False">
+             x:Class="CollectApple.Views.RegisterPage">
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
             <Entry Text="{Binding Email}" Placeholder="Email"/>

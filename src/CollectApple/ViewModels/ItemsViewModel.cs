@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace CollectApple.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class ItemsViewModel : _BaseViewModel
     {
         private Item _selectedItem;
 

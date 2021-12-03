@@ -21,7 +21,7 @@
                 SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Orientation="Horizontal" Padding="10" x:DataType="model:Collection">
+                    <StackLayout Orientation="Horizontal" Padding="10" x:DataType="local:CollectionViewModel">
                         <Image Source="{Binding ImageUrl}"/>
                         <StackLayout Padding="10">
                             <Label Text="{Binding Name}" 

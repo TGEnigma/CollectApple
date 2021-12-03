@@ -13,7 +13,15 @@ namespace CollectApple
         {
             InitializeComponent();
 
+            var dbContext = new AppDbContext();
             DependencyService.Register<MockDataStore>();
+            DependencyService.RegisterSingleton( dbContext );
+            DependencyService.Register<UserService>();
+            DependencyService.Register<CollectionService>();
+            DependencyService.Register<CollectibleService>();
+
+            AppDbContextInitializer.Initialize( dbContext );
+
             MainPage = new AppShell();
         }
 

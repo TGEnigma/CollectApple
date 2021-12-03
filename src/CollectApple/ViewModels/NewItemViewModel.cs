@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace CollectApple.ViewModels
 {
-    public class NewItemViewModel : BaseViewModel
+    public class NewItemViewModel : _BaseViewModel
     {
         private string text;
         private string description;

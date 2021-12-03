@@ -13,6 +13,7 @@ namespace CollectApple.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            Window?.SetStatusBarColor( Android.Graphics.Color.Argb( 0xff, 0xff, 0x6b, 0x6b ) );
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

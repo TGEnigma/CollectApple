@@ -7,7 +7,7 @@ using Xamarin.Forms;
 namespace CollectApple.ViewModels
 {
     [QueryProperty( nameof( ItemId ), nameof( ItemId ) )]
-    public class ItemDetailViewModel : BaseViewModel
+    public class ItemDetailViewModel : _BaseViewModel
     {
         private string itemId;
         private string text;

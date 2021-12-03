@@ -39,7 +39,19 @@ namespace CollectApple.ViewModels
 
         private async void OnRegisterClicked( object obj )
         {
-            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+            try
+            {
+                if (Password != PasswordCheck)
+                    throw new System.Exception( "Passwords do not match" );
+
+                UserService.Create( Email, Password );
+            }
+            catch ( System.Exception ex )
+            {
+                Shell.Current.DisplayAlert( "Error", ex.Message, "OK" );
+                return;
+            }
+
             await Shell.Current.GoToAsync( $"//{nameof( AboutPage )}" );
         }
 

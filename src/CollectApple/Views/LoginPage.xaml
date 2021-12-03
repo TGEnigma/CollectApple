@@ -20,7 +20,7 @@
                 </Label>
             </FlexLayout>
             <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
-            <Label Text="Don't have an account?"></Label>
+            <Label Text="Don't have an account?" Padding="0, 40, 0, 0"></Label>
             <Button Text="Sign up" Command="{Binding RegisterCommand}"/>
         </StackLayout>
     </ContentPage.Content>

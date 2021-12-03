@@ -42,7 +42,7 @@ namespace CollectApple.ViewModels
         {
             try
             {
-                var item = CollectAppleDbContext.Instance.Collectibles.Where( x => x.Id == id ).FirstOrDefault();
+                var item = DbContext.Collectibles.Where( x => x.Id == id ).FirstOrDefault();
                 this.id = id;
                 Name = item.Name;
                 Description = item.Description;

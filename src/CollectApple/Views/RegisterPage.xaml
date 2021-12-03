@@ -11,8 +11,8 @@
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
             <Entry Text="{Binding Email}" Placeholder="Email"/>
             <Entry Text="{Binding Password}" Placeholder="Password" IsPassword="True"/>
-            <Entry Text="{Binding PasswordCheck}" Placeholder="Password validation"/>
-            <Button VerticalOptions="Center" Text="Register" Command="{Binding RegisterCommand}"/>
+            <Entry Text="{Binding PasswordCheck}" Placeholder="Password validation" IsPassword="True"/>
+            <Button VerticalOptions="Center" Text="Sign Up" Command="{Binding RegisterCommand}"/>
             <Label Text="Already have an account?"/>
             <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
         </StackLayout>

@@ -15,21 +15,21 @@ namespace CollectApple.ViewModels
     [QueryProperty( nameof( UserId ), nameof( UserId ) )]
     public class CollectionsViewModel : BaseViewModel
     {
-        private Collection _selectedItem;
+        private CollectionViewModel _selectedItem;
 
-        public ObservableCollection<Collection> Items { get; }
+        public ObservableCollection<CollectionViewModel> Items { get; }
         public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
-        public Command<Collection> ItemTapped { get; }
+        public Command<CollectionViewModel> ItemTapped { get; }
         public int? UserId { get; set; }
 
         public CollectionsViewModel()
         {
             Title = "My collections";
-            Items = new ObservableCollection<Collection>();
+            Items = new ObservableCollection<CollectionViewModel>();
             LoadItemsCommand = new Command( async () => await ExecuteLoadItemsCommand() );
 
-            ItemTapped = new Command<Collection>( OnItemSelected );
+            ItemTapped = new Command<CollectionViewModel>( OnItemSelected );
 
             AddItemCommand = new Command( OnAddItem );
         }
@@ -41,10 +41,16 @@ namespace CollectApple.ViewModels
             try
             {
                 Items.Clear();
-                var items = CollectAppleDbContext.Instance.Collections.Where( x => x.Owner.Id == UserId.GetValueOrDefault(1) );
+                var items = CollectionService.GetUserCollections( UserId.GetValueOrDefault( 1 ) );
                 foreach ( var item in items )
                 {
-                    Items.Add( item );
+                    Items.Add( new CollectionViewModel()
+                    {
+                        Description = item.Collection.Description,
+                        Id = item.Id,
+                        Name = item.Collection.Name,
+                        ImageUrl = item.Collection.ImageUrl,
+                    } );
                 }
             }
             catch ( Exception ex )
@@ -63,7 +69,7 @@ namespace CollectApple.ViewModels
             SelectedItem = null;
         }
 
-        public Collection SelectedItem
+        public CollectionViewModel SelectedItem
         {
             get => _selectedItem;
             set
@@ -78,7 +84,7 @@ namespace CollectApple.ViewModels
             await Shell.Current.GoToAsync( nameof( NewItemPage ) );
         }
 
-        async void OnItemSelected( Collection item )
+        async void OnItemSelected( CollectionViewModel item )
         {
             if ( item == null )
                 return;

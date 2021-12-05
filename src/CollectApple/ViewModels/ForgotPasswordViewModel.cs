@@ -16,6 +16,9 @@ namespace CollectApple.ViewModels
             set { SetProperty( ref email, value ); }
         }
 
+        public ImageSource Logo
+            => ImageSource.FromResource( "CollectApple.Images.Logo.png" );
+
         public Command ResetPasswordCommand { get; set; }
         public Command BackToLoginCommand { get; set; }
 

@@ -13,28 +13,14 @@ namespace CollectApple.Services
         {
         }
 
-        public IQueryable<Collectible> GetAllCollectibles()
-        {
-            return Context.Collectibles;
-        }
-
-        public IQueryable<UserCollectible> GetAllUserCollectibles()
-        {
-            return Context.UserCollectibles;
-        }
-
-        public IQueryable<UserCollectible> GetUserCollectibles( User user )
-        {
-            return Context.UserCollectibles.Where( x => x.Id == user.Id );
-        }
-
-        public Collectible CreateCollectible( string name, string description, string imageUrl )
+        public Collectible CreateCollectible( Collection collection, string name, string description, string imageUrl )
         {
             var collectible = new Collectible()
             {
                 Name = name,
                 Description = description,
                 ImageUrl = imageUrl,
+                CollectionId = collection.Id,
             };
             Context.Collectibles.Add( collectible );
             Context.SaveChanges();
@@ -61,7 +47,7 @@ namespace CollectApple.Services
         {
             using ( var transaction = Context.Database.BeginTransaction() )
             {
-                var collectible = CreateCollectible( name, description, imageUrl );
+                var collectible = CreateCollectible( userCollection.Collection, name, description, imageUrl );
                 return CreateUserCollectible( userCollection, collectible );
             }
         }

@@ -23,6 +23,9 @@ namespace CollectApple.ViewModels
             set { SetProperty( ref password, value ); }
         }
 
+        public ImageSource Logo
+            => ImageSource.FromResource( "CollectApple.Images.Logo.png" );
+
         public Command LoginCommand { get; }
         public Command RegisterCommand { get; }
         public Command ForgotPasswordCommand { get; }

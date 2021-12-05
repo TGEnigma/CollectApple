@@ -41,7 +41,7 @@ namespace CollectApple.ViewModels
             try
             {
                 Items.Clear();
-                var items = CollectionService.GetUserCollections( UserId.GetValueOrDefault( 1 ) );
+                var items = CollectionService.GetUserCollectionsByUserId( UserId.GetValueOrDefault( 1 ) );
                 foreach ( var item in items )
                 {
                     Items.Add( new CollectionViewModel()

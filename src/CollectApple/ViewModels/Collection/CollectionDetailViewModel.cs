@@ -1,6 +1,8 @@
 ﻿using CollectApple.Services;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -40,16 +42,35 @@ namespace CollectApple.ViewModels
             set => SetProperty( ref description, value );
         }
 
+        public ObservableCollection<CollectibleViewModel> Collectibles { get; }
+
+        public CollectionDetailViewModel()
+        {
+            Collectibles = new ObservableCollection<CollectibleViewModel>();
+        }
+
         public async void LoadId( int id )
         {
             try
             {
-                var item = DbContext.Collections.Where( x => x.Id == id ).FirstOrDefault();
+                var collection = CollectionService.GetCollectionById( id )
+                    .Include( x => x.Collectibles )
+                    .FirstOrDefault();
+
                 this.id = id;
-                Name = item.Name;
-                Description = item.Description;
+                Name = collection.Name;
+                Description = collection.Description;
+                foreach ( var item in collection.Collectibles )
+                {
+                    Collectibles.Add( new CollectibleViewModel()
+                    {
+                        Id = item.Id,
+                        ImageUrl = item.ImageUrl,
+                        Name = item.Name,
+                    });
+                }
             }
-            catch ( Exception )
+            catch ( Exception ex )
             {
                 Debug.WriteLine( "Failed to Load Item" );
             }

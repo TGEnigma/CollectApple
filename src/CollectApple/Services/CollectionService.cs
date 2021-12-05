@@ -19,29 +19,14 @@ namespace CollectApple.Services
         {
         }
 
-        public IQueryable<Collection> GetAllCollections()
+        public IQueryable<Collection> GetCollectionById( int id )
         {
-            return Context.Collections;
+            return Context.Collections.Where( x => x.Id == id );
         }
 
-        public IQueryable<UserCollection> GetAllUserCollections()
-        {
-            return Context.UserCollections;
-        }
-
-        public IQueryable<UserCollection> GetUserCollections(int userId)
+        public IQueryable<UserCollection> GetUserCollectionsByUserId(int userId)
         {
             return Context.UserCollections.Where( x => x.UserId == userId );
-        }
-
-        public Collection GetCollectionByName(string name)
-        {
-            return Context.Collections.FirstOrDefault( x => x.Name == name );
-        }
-
-        public IQueryable<UserCollection> GetUserCollectionByName(User user, string name)
-        {
-            return Context.UserCollections.Where( x => x.UserId == user.Id );
         }
 
         public UserCollection CreateUserCollection( User user, string name, string description, string imageUrl )

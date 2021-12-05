@@ -10,7 +10,10 @@
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Entry Text="{Binding Email}" Placeholder="Email" />
+            <Image Source="{Binding Logo}"></Image>
+            <Label Text="Collect Apple" Margin="0, -50, 0, 0" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title"></Label>
+
+            <Entry  Text="{Binding Email}" Placeholder="Email" />
             <FlexLayout Direction="Row" AlignItems="Start" JustifyContent="SpaceBetween">
                 <Entry FlexLayout.Grow="1" Text="{Binding Password}" Placeholder="Password" IsPassword="True" />
                 <Label FlexLayout.AlignSelf="Center" Text="Forgot?" TextColor="{x:StaticResource Primary}">

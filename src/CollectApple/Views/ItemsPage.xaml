@@ -5,10 +5,11 @@
              Title="{Binding Title}"
              xmlns:local="clr-namespace:CollectApple.ViewModels"  
              xmlns:model="clr-namespace:CollectApple.Models"  
+             xmlns:l10n="clr-namespace:CollectApple.Localization"
              x:Name="BrowseItemsPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />
+        <ToolbarItem Text="{l10n:Localize Add}" Command="{Binding AddItemCommand}" />
     </ContentPage.ToolbarItems>
     <!--
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.

@@ -2,6 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:CollectApple.Views"
+       xmlns:l10n="clr-namespace:CollectApple.Localization"
        Title="CollectApple"
        x:Class="CollectApple.AppShell"
        >
@@ -88,9 +89,12 @@
     <FlyoutItem Title="Collections" Icon="icon_feed.png">
         <ShellContent Route="CollectionsPage" ContentTemplate="{DataTemplate local:CollectionsPage}" />
     </FlyoutItem>
-
+    <FlyoutItem Title="Settings" Icon="icon_settings.png">
+        <ShellContent Route="SettingsPage" ContentTemplate="{DataTemplate local:SettingsPage}" />
+    </FlyoutItem>
+    
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
-    <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
+    <MenuItem Text="{l10n:Localize Logout}" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
     </MenuItem>
 
     <!--

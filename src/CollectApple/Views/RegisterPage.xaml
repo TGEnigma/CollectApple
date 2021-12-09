@@ -4,20 +4,21 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:viewmodels="clr-namespace:CollectApple.ViewModels" 
+             xmlns:l10n="clr-namespace:CollectApple.Localization"
              x:DataType="viewmodels:RegisterViewModel"
              mc:Ignorable="d"
              x:Class="CollectApple.Views.RegisterPage">
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
             <Image Source="{Binding Logo}"></Image>
-            <Label Text="Collect Apple" Margin="0, -50, 0, 0" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title"></Label>
+            <Label Text="{l10n:Localize AppName}" Margin="0, -50, 0, 0" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title"></Label>
 
-            <Entry Text="{Binding Email}" Placeholder="Email"/>
-            <Entry Text="{Binding Password}" Placeholder="Password" IsPassword="True"/>
-            <Entry Text="{Binding PasswordCheck}" Placeholder="Password validation" IsPassword="True"/>
-            <Button VerticalOptions="Center" Text="Sign Up" Command="{Binding RegisterCommand}"/>
-            <Label Text="Already have an account?" Padding="0, 40, 0, 0"/>
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+            <Entry Text="{Binding Email}" Placeholder="{l10n:Localize Email}"/>
+            <Entry Text="{Binding Password}" Placeholder="{l10n:Localize Password}" IsPassword="True"/>
+            <Entry Text="{Binding PasswordCheck}" Placeholder="{l10n:Localize RepeatPassword}" IsPassword="True"/>
+            <Button VerticalOptions="Center" Text="{l10n:Localize SignUp}" Command="{Binding RegisterCommand}"/>
+            <Label Text="{l10n:Localize AlreadyHaveAccount}" Padding="0, 40, 0, 0"/>
+            <Button VerticalOptions="Center" Text="{l10n:Localize Login}" Command="{Binding LoginCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

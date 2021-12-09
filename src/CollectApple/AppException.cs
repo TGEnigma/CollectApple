@@ -2,7 +2,7 @@
 
 namespace CollectApple
 {
-    public class AppException : Exception
+    public class AppException : ApplicationException
     {
         public AppException(string message)
             : base(message)
@@ -10,12 +10,12 @@ namespace CollectApple
         }
     }
 
-    public class AppUnknownUserException : AppException
+    public class InvalidCredentialsException : AppException
     {
         public string Email { get; }
 
-        public AppUnknownUserException(string email)
-            : base(FormatMessage(email))
+        public InvalidCredentialsException(string email)
+            : base( $"No known user with the given email" )
         {
             Email = email;
         }
@@ -23,6 +23,14 @@ namespace CollectApple
         private static string FormatMessage(string email)
         {
             return $"No known user with the given email";
+        }
+    }
+
+    public class ExpiredPasswordException : AppException
+    {
+        public ExpiredPasswordException() 
+            : base( "The password for this user has expired." )
+        {
         }
     }
 }

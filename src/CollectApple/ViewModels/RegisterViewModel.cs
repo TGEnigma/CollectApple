@@ -41,7 +41,7 @@ namespace CollectApple.ViewModels
             LoginCommand = new Command( OnLoginClicked );
         }
 
-        private async void OnRegisterClicked( object obj )
+        private async void OnRegisterClicked()
         {
             try
             {
@@ -49,20 +49,25 @@ namespace CollectApple.ViewModels
                     throw new System.Exception( "Passwords do not match" );
 
                 UserService.CreateUser( Email, Password );
+                await Shell.Current.GoToAsync( $"//{nameof( CollectionsPage )}" );
             }
             catch ( System.Exception ex )
             {
-                Shell.Current.DisplayAlert( "Error", ex.Message, "OK" );
-                return;
+                HandleException( ex );
             }
-
-            await Shell.Current.GoToAsync( $"//{nameof( CollectionsPage )}" );
         }
 
-        private async void OnLoginClicked( object obj )
+        private async void OnLoginClicked()
         {
-            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Shell.Current.GoToAsync( $"//{nameof( LoginPage )}" );
+            try
+            {
+                // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+                await Shell.Current.GoToAsync( $"//{nameof( LoginPage )}" );
+            }
+            catch ( System.Exception ex )
+            {
+                HandleException( ex );
+            }
         }
     }
 }

@@ -67,7 +67,7 @@ namespace CollectApple.ViewModels
             }
         }
 
-        private async void OnAddItem( object obj )
+        private async void OnAddItem()
         {
             await Shell.Current.GoToAsync( nameof( NewItemPage ) );
         }

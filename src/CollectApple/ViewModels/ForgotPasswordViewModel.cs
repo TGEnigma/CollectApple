@@ -30,20 +30,41 @@ namespace CollectApple.ViewModels
             EnterCodeCommand = new Command( OnEnterCode );
         }
 
-        private async void OnEnterCode( object obj )
+        private async void OnEnterCode()
         {
-            await Shell.Current.Navigation.PushAsync(new ForgotPasswordCodePage(Email));
+            try
+            {
+                await Shell.Current.Navigation.PushAsync( new ForgotPasswordCodePage( Email ) );
+            }
+            catch ( Exception ex )
+            {
+                HandleException( ex );
+            }
         }
 
-        private async void OnResetPassword( object obj )
+        private async void OnResetPassword()
         {
-            await UserService.SendResetPasswordEmailAsync(Email);
-            await Shell.Current.DisplayAlert( "Notice", "An email has been sent with a link to reset the password.", "OK" );
+            try
+            {
+                await UserService.SendResetPasswordEmailAsync( Email );
+                await Shell.Current.DisplayAlert( "Notice", "An email has been sent with a link to reset the password.", "OK" );
+            }
+            catch ( Exception ex )
+            {
+                HandleException( ex );
+            }
         }
 
-        private async void OnBackToLogin( object obj)
+        private async void OnBackToLogin()
         {
-            await Shell.Current.GoToAsync( $"//{nameof(LoginPage)}" );
+            try
+            {
+                await Shell.Current.GoToAsync( $"//{nameof( LoginPage )}" );
+            }
+            catch ( Exception ex )
+            {
+                HandleException( ex );
+            }
         }
     }
 }

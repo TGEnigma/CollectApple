@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace CollectApple.ViewModels
 {
@@ -24,9 +25,13 @@ namespace CollectApple.ViewModels
             ResetPasswordCommand = new Command(OnResetPassword);
         }
 
-        private async void OnResetPassword(object obj)
+        private async void OnResetPassword()
         {
-            await UserService.ResetPasswordAsync(Email, Code);
+            try
+            {
+                await UserService.ResetPasswordAsync( Email, Code );
+            }
+            catch ( Exception ex ) { HandleException( ex );  }
         }
     }
 }

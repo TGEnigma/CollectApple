@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:l10n="clr-namespace:CollectApple.Localization"
+             xmlns:vm="clr-namespace:CollectApple.ViewModels"
+             x:DataType="vm:SettingsViewModel"
+             x:Class="CollectApple.Views.SettingsPage">
+    <ContentPage.Content>
+        <StackLayout Padding="10,10,10,0">
+            <Label Text="{l10n:Localize Language}"></Label>
+            <Picker SelectedItem="{Binding Language, Mode=TwoWay}" ItemsSource="{Binding Languages}" ItemDisplayBinding="{Binding Name}"/>
+            <Button Text="{l10n:Localize Save}" Command="{Binding SaveCommand}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

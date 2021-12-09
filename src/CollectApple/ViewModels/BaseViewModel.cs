@@ -1,4 +1,5 @@
-﻿using CollectApple.Models;
+﻿using CollectApple.Localization;
+using CollectApple.Models;
 using CollectApple.Services;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,11 @@ namespace CollectApple.ViewModels
             onChanged?.Invoke();
             OnPropertyChanged( propertyName );
             return true;
+        }
+
+        protected void HandleException( Exception ex )
+        {
+            Shell.Current.DisplayAlert( Strings.Error, ex.Message, Strings.OK );
         }
 
         #region INotifyPropertyChanged

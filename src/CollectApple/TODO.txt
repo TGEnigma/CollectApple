@@ -1,0 +1,65 @@
+﻿Pages:
+	- ContentPage [x]
+	- FlyoutPage [x]
+	- NavigationPage
+	- TabbedPage
+	- CarouselPage
+	- TemplatedPage
+
+Layouts:
+	- ContentView
+	- Frame
+	- ScrollView
+	- TemplatedView
+	- ContentPresenter
+	- StackLayout [x]
+	- Grid
+	- AbsoluteLayout
+	- RelativeLayout
+	- FlexLayout [x]
+
+Views:
+	- BoxView
+	- Ellipse
+	- Label [x]
+	- Line
+	- Image
+	- Map
+	- OpenGLView
+	- Path
+	- Polygon
+	- Polyline
+	- Rectangle
+	- WebView
+
+Cells:
+	- TextCell
+	- ImageCell
+	- SwitchCell
+	- EntryCell
+
+- Button [x]
+- ImageButton
+- RadioButton
+- RefreshView
+- SearchBar
+- SwipeView
+- CheckBox
+- DatePicker
+- Slider
+- Stepper
+- Switch
+- TimePicker
+- Editor
+- Entry
+- ActivityIndicator
+- ProgressBar
+- CarouselView
+- CollectionView
+- IndicatorView
+- ListView
+- Picker
+- TableView
+- MenuItem
+- ToolbarItem
+- 

@@ -13,6 +13,8 @@ namespace CollectApple.Models
         public string PasswordSalt { get; set; }
         public string PasswordResetCode { get; set; }
         public DateTime PasswordResetCodeExpiry { get; set; }
+        public bool PasswordExpired { get; set; }
+        public bool IsEmailConfirmed { get; set; }
 
         public virtual ICollection<UserCollection> Collections { get; set; }
         public virtual ICollection<UserCollectible> Collectibles { get; set; }

@@ -72,7 +72,7 @@ namespace CollectApple.ViewModels
             }
             catch ( Exception ex )
             {
-                Debug.WriteLine( "Failed to Load Item" );
+                HandleException( ex );
             }
         }
     }

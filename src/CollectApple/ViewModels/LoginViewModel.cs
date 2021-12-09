@@ -39,7 +39,7 @@ namespace CollectApple.ViewModels
             ForgotPasswordCommand = new Command( OnForgotPasswordClicked );
         }
 
-        private async void OnLoginClicked( object obj )
+        private async void OnLoginClicked()
         {
             try
             {
@@ -49,25 +49,38 @@ namespace CollectApple.ViewModels
                 if ( string.IsNullOrWhiteSpace( Password ) )
                     throw new AppException( "Please fill in your password." );
 
-                UserService.Login( Email, Password );
+                UserService.SignIn( Email, Password );
+
+                await Shell.Current.GoToAsync( $"//{nameof( CollectionsPage )}" );
             }
             catch ( Exception ex )
             {
-                await Shell.Current.DisplayAlert( "Error", ex.Message, "OK" );
-                return;
+                HandleException( ex );
             }
-
-            await Shell.Current.GoToAsync( $"//{nameof( CollectionsPage )}" );
         }
 
-        private async void OnRegisterClicked( object obj )
+        private async void OnRegisterClicked()
         {
-            await Shell.Current.Navigation.PushAsync( new RegisterPage() );
+            try
+            {
+                await Shell.Current.Navigation.PushAsync( new RegisterPage() );
+            }
+            catch ( Exception ex )
+            {
+                HandleException( ex );
+            }
         }
 
-        private async void OnForgotPasswordClicked( object obj )
+        private async void OnForgotPasswordClicked()
         {
-            await Shell.Current.Navigation.PushAsync( new ForgotPasswordPage() );
+            try
+            {
+                await Shell.Current.Navigation.PushAsync( new ForgotPasswordPage() );
+            }
+            catch ( Exception ex )
+            {
+                HandleException( ex );
+            }
         }
     }
 }

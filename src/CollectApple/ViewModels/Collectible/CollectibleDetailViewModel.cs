@@ -47,9 +47,9 @@ namespace CollectApple.ViewModels
                 Name = item.Name;
                 Description = item.Description;
             }
-            catch ( Exception )
+            catch ( Exception ex )
             {
-                Debug.WriteLine( "Failed to Load Item" );
+                HandleException( ex );
             }
         }
     }

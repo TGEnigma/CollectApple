@@ -29,19 +29,19 @@ namespace CollectApple.Droid
 
         private void AndroidEnvironmentOnUnhandledExceptionRaiser(object sender, RaiseThrowableEventArgs e)
         {
-            ExceptionHandler.HandleException(e.Exception);
+            //ExceptionHandler.HandleException(e.Exception);
             e.Handled = true;
         }
 
         private void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
         {
-            if (ExceptionHandler.HandleException(e.Exception))
-                e.SetObserved();
+            //if (ExceptionHandler.HandleException(e.Exception))
+            //    e.SetObserved();
         }
 
         private void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            ExceptionHandler.HandleException(e.ExceptionObject as Exception);
+            //ExceptionHandler.HandleException(e.ExceptionObject as Exception);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

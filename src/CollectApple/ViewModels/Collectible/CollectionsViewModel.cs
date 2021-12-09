@@ -55,7 +55,7 @@ namespace CollectApple.ViewModels
             }
             catch ( Exception ex )
             {
-                Debug.WriteLine( ex );
+                HandleException( ex );
             }
             finally
             {
@@ -79,18 +79,32 @@ namespace CollectApple.ViewModels
             }
         }
 
-        private async void OnAddItem( object obj )
+        private async void OnAddItem( )
         {
-            await Shell.Current.GoToAsync( nameof( NewItemPage ) );
+            try
+            {
+                await Shell.Current.GoToAsync( nameof( NewItemPage ) );
+            }
+            catch ( Exception ex )
+            {
+                HandleException( ex );
+            }
         }
 
         async void OnItemSelected( CollectionViewModel item )
         {
-            if ( item == null )
-                return;
+            try
+            {
+                if ( item == null )
+                    return;
 
-            // This will push the CollectionDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync( $"{nameof( CollectionDetailPage )}?{nameof( CollectionDetailPage.Id )}={item.Id}" );
+                // This will push the CollectionDetailPage onto the navigation stack
+                await Shell.Current.GoToAsync( $"{nameof( CollectionDetailPage )}?{nameof( CollectionDetailPage.Id )}={item.Id}" );
+            }
+            catch ( Exception ex )
+            {
+                HandleException( ex );
+            }
         }
     }
 }

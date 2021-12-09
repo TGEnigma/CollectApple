@@ -55,7 +55,7 @@ namespace CollectApple.Services
             }
             catch ( Exception ex )
             {
-                
+                // TODO
             }
         }
 

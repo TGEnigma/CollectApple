@@ -1,5 +1,6 @@
 ﻿using CollectApple.Services;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System;
 using System.Collections.Generic;
 
 namespace CollectApple.Models
@@ -10,6 +11,8 @@ namespace CollectApple.Models
         public string Email { get; set; }
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
+        public string PasswordResetCode { get; set; }
+        public DateTime PasswordResetCodeExpiry { get; set; }
 
         public virtual ICollection<UserCollection> Collections { get; set; }
         public virtual ICollection<UserCollectible> Collectibles { get; set; }

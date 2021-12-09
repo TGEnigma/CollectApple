@@ -11,7 +11,7 @@
             var collectibleService = new CollectibleService();
             var collectionService = new CollectionService();
 
-            var user = userService.Create( "test@mail.com", "password1234" );
+            var user = userService.CreateUser( "test@mail.com", "password1234" );
 
             // Initialize library collections
             var userCollection = collectionService.CreateUserCollection(

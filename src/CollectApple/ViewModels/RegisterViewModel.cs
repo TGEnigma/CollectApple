@@ -1,4 +1,5 @@
 ﻿using CollectApple.Views;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace CollectApple.ViewModels
@@ -47,7 +48,7 @@ namespace CollectApple.ViewModels
                 if (Password != PasswordCheck)
                     throw new System.Exception( "Passwords do not match" );
 
-                UserService.Create( Email, Password );
+                UserService.CreateUser( Email, Password );
             }
             catch ( System.Exception ex )
             {
@@ -55,7 +56,7 @@ namespace CollectApple.ViewModels
                 return;
             }
 
-            await Shell.Current.GoToAsync( $"//{nameof( AboutPage )}" );
+            await Shell.Current.GoToAsync( $"//{nameof( CollectionsPage )}" );
         }
 
         private async void OnLoginClicked( object obj )

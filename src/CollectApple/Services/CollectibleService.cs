@@ -87,7 +87,7 @@ namespace CollectApple.Services
             using ( var transaction = Context.Database.BeginTransaction() )
             {
                 if ( user.Id == userCollectible.Id )
-                    throw new Exception( "You can't buy your own collectible" );
+                    throw new AppException( "You can't buy your own collectible" );
 
                 userCollectible.State = CollectibleState.Sold;
 

@@ -21,15 +21,23 @@ namespace CollectApple.ViewModels
 
         public Command ResetPasswordCommand { get; set; }
         public Command BackToLoginCommand { get; set; }
+        public Command EnterCodeCommand { get; set; }
 
         public ForgotPasswordViewModel()
         {
             ResetPasswordCommand = new Command( OnResetPassword );
             BackToLoginCommand = new Command( OnBackToLogin );
+            EnterCodeCommand = new Command( OnEnterCode );
+        }
+
+        private async void OnEnterCode( object obj )
+        {
+            await Shell.Current.Navigation.PushAsync(new ForgotPasswordCodePage(Email));
         }
 
         private async void OnResetPassword( object obj )
         {
+            await UserService.SendResetPasswordEmailAsync(Email);
             await Shell.Current.DisplayAlert( "Notice", "An email has been sent with a link to reset the password.", "OK" );
         }
 

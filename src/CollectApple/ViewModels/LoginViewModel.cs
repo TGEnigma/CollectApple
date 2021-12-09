@@ -1,7 +1,9 @@
-﻿using CollectApple.Views;
+﻿using CollectApple.Services;
+using CollectApple.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace CollectApple.ViewModels
@@ -41,6 +43,12 @@ namespace CollectApple.ViewModels
         {
             try
             {
+                if ( string.IsNullOrWhiteSpace( Email ) )
+                    throw new AppException( "Please fill in your email." );
+
+                if ( string.IsNullOrWhiteSpace( Password ) )
+                    throw new AppException( "Please fill in your password." );
+
                 UserService.Login( Email, Password );
             }
             catch ( Exception ex )
